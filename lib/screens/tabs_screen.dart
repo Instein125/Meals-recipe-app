@@ -68,7 +68,7 @@ class _TabsScreenState extends State<TabsScreen> {
           style: Theme.of(context).textTheme.headline6,
         ),
       ),
-      drawer: const MainDrawer(),
+      drawer: MainDrawer(),
       body: _screens[_selectedIndex]['screen'],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectScreen,
