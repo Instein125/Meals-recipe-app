@@ -8,6 +8,9 @@ import '../dummy_data.dart';
 
 class SpecificCategoryScreen extends StatefulWidget {
   static const routeName = '/specificCategory';
+  final List<Meal> availableMeals;
+
+  SpecificCategoryScreen(this.availableMeals);
 
   @override
   State<SpecificCategoryScreen> createState() => _SpecificCategoryScreenState();
@@ -18,10 +21,10 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
   late var catTitle;
   late List<Meal> displayMeals;
   @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+  // void initState() {
+  //   // TODO: implement initState
+  //   super.initState();
+  // }
 
   void didChangeDependencies() {
     // ignore: todo
@@ -30,8 +33,9 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
         ModalRoute.of(context)!.settings.arguments as Map<String, String>;
     catTitle = routeArg['title'];
     final catId = routeArg['id'];
-    displayMeals =
-        DUMMY_MEALS.where((meal) => meal.categories.contains(catId)).toList();
+    displayMeals = widget.availableMeals
+        .where((meal) => meal.categories.contains(catId))
+        .toList();
   }
 
   void _removeItem(String mealId) {
