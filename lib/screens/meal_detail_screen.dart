@@ -1,13 +1,18 @@
 // ignore_for_file: deprecated_member_use, non_constant_identifier_names
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:cupertino_icons/cupertino_icons.dart';
 
 import '../dummy_data.dart';
 
 class MealDetailScreen extends StatelessWidget {
   static const routeName = '/meal_detail';
 
-  const MealDetailScreen({Key? key}) : super(key: key);
+  final Function toogleFavourite;
+  final isFavourite;
+
+  MealDetailScreen(this.toogleFavourite, this.isFavourite);
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +62,17 @@ class MealDetailScreen extends StatelessWidget {
     return Scaffold(
       appBar: appBar,
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.of(context).pop(mealId);
-        },
-        child: const Icon(
-          Icons.delete,
+        backgroundColor: Color.fromARGB(204, 255, 255, 255),
+        onPressed: //() {
+            //   Navigator.of(context).pop(mealId);
+            // },
+            (() => toogleFavourite(mealId)),
+        child: Icon(
+          isFavourite(mealId)
+              ? CupertinoIcons.heart_fill
+              : CupertinoIcons.heart,
+          color: Colors.red,
+          size: 40,
         ),
       ),
       body: SingleChildScrollView(

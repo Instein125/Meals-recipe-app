@@ -64,7 +64,7 @@ class _SpecificCategoryScreenState extends State<SpecificCategoryScreen> {
             complexity: displayMeals[index].complexity,
             duration: displayMeals[index].duration,
             imageUrl: displayMeals[index].imageUrl,
-            removeItem: _removeItem,
+            // removeItem: _removeItem,
           );
         },
         itemCount: displayMeals.length,
